@@ -318,9 +318,13 @@ document.getElementById("saveBtn").onclick = () => {
     `FN:${PROFILE.fullName}`,
     "TITLE:Création digitale",
     `EMAIL;TYPE=INTERNET:${PROFILE.email}`,
-    `URL:${PROFILE.instagram}`,
-    `X-SOCIALPROFILE;TYPE=instagram:${PROFILE.instagram}`,
-    `X-SOCIALPROFILE;TYPE=tiktok:${PROFILE.tiktok}`,
+    // URL étiquetées plutôt que X-SOCIALPROFILE : Apple Contacts n'affiche ce
+    // dernier que pour les services qu'il connaît, donc Instagram et TikTok
+    // apparaissaient en lignes vides dans la fiche.
+    `item1.URL:${PROFILE.instagram}`,
+    "item1.X-ABLabel:Instagram",
+    `item2.URL:${PROFILE.tiktok}`,
+    "item2.X-ABLabel:TikTok",
     `NOTE:${PROFILE.handle} • WhatsApp: ${PROFILE.whatsapp}`,
     "END:VCARD",
   ].join("\n");
